@@ -15,17 +15,18 @@ dev:
 build:
   # The steps that will be executed on build
   steps:
-
-    # golint step!
     - wercker/golint
 
-    # Build the project
+    - script:
+        name: sleep
+        code: |
+          sleep 60
+
     - script:
         name: go build
         code: |
           go build ./...
 
-    # Test the project
     - script:
         name: go test
         code: |
